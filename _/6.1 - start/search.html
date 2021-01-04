@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Build Search Applications with Elasticsearch and AngularJS </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="http://css-spinners.com/css/spinner/throbber.css" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400&amp;subset=latin,greek-ext' rel='stylesheet' type='text/css'>
+
+  <script src="js/vendor/angular.js"></script>
+  <script src="js/vendor/angular-sanitize.min.js"></script>
+  <script src="js/vendor/elasticsearch.angular.min.js"></script>
+<script src="js/search-app.js"></script>
+</head>
+
+<body ng-app="searchApp" ng-controller="SearchResultsList">
+  <div class="search-form">
+    <form ng-submit="search()">
+      <input type="text" ng-model="searchTerms" placeholder="Search for books" class="search-input">
+      <input type="submit" value="Search" class="search-submit">
+    </form>
+  </div>
+
+  <section class="results">
+    <h1 class="search-title">
+      Results for <strong>{{results.searchTerms}}</strong> ({{results.documentCount}})
+    </h1>
+
+    <p ng-if="noResults" class="no-results">No results were found for your search.</p>
+
+    <ul>
+      <li ng-repeat="book in results.documents">
+        <strong><span ng-bind-html="book.title"></span> &mdash; {{book.price_gbp}}</strong>
+        <p ng-bind-html="book['detailed description']"></p>
+      </li>
+    </ul>
+
+    <button ng-click="getNextPage()" ng-if="canGetNextPage" class="load-next">Load More Results</button>
+
+    <div class="throbber" ng-if="isSearching">
+      SEARCHING &hellip;
+    </div>
+  </section>
+
+  <section class="filters" ng-if="results.searchTerms">
+    <strong>Sort by</strong><br>
+    <select ng-model="$parent.selectedSort" ng-options="sort.displayName for sort in sortOptions" ng-change="updateSort()"></select>
+
+    <hr>
+
+    <h3>Refine by</h3>
+    <div class="filter-group" ng-repeat="(filter, filterArray) in filters.availableFilters">
+      <strong class="filter-title">{{filter}}</strong>
+      <ul class="filter-values">
+        <li ng-repeat="obj in filterArray | orderBy:obj.isSelected">
+          <a href="#" ng-class="{active:obj.isSelected}" ng-click="toggleFilter(filter, obj.value)">{{obj.value}}</a> ({{obj.count}})
+        </li>
+      </ul>
+      
+    </div>
+
+  </section>
+</body>
+</html>

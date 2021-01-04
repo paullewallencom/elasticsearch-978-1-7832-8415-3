@@ -1,0 +1,1 @@
+var searchApp = angular.module('searchApp', ['elasticsearch']);

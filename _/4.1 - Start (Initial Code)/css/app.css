@@ -1,0 +1,188 @@
+body {
+  width: 80%;
+  max-width: 960px;
+  margin: 100px auto 50px;
+  font-family: "Open Sans", helvetica, arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.38em;
+  color: #222;
+}
+
+.search-form {
+  position: relative;
+  overflow: visible;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #f5f0ed;
+}
+
+.search-input {
+  width: 70%;
+  padding: 10px 10px;
+  border: 1px solid #d4d1cf;
+  background: #faf7f6;
+  line-height: 20px;
+  font-size: 20px
+}
+
+.suggestions {
+  position: absolute;
+  width: 70%;
+  margin: 0;
+  padding: 0 10px;
+  background: #fff;
+  border: 1px solid #eee;
+}
+.suggestions li {
+  padding: .5em 1em;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+}
+.suggestions small {
+  color: #ccc;
+}
+
+.search-submit,
+.load-next {
+  height: 50px;
+  padding: 0 20px;
+  background: #5b5b59;
+  color: #fff;
+  border: none;
+  vertical-align: top;
+}
+.load-next {
+  height: 30px;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.search-title {
+  margin: 0 0 25px;
+  color: #5b5b59;
+}
+.search-title em {
+  font-style: normal;
+  font-weight: 400;
+  color: #111;
+}
+
+.results {
+  width: auto;
+  margin-right: 250px;
+  margin-bottom: 100px;
+  float: left;
+}
+
+.price {
+  display: inline-block;
+  margin-left: 1em;
+  background: orange;
+  color: #fff;
+  padding: 0 .5em;
+}
+
+.search-title {
+  font-weight: 300;
+  font-size: 30px;
+}
+
+.filters {
+  width: 175px;
+  margin-left: -175px;
+  float: right;
+}
+
+.filter-group {
+  margin: 0 0 50px;
+  text-transform: capitalize;
+}
+
+.filter-title {
+
+}
+
+.filter-values {
+}
+
+.filter-values li {
+  margin-bottom: .5em;
+  font-weight: 300
+}
+a.active {
+  font-weight: bold;
+}
+
+/* Filters */
+
+
+/*HTML Elements*/
+
+UL {
+  padding: 0;
+  list-style: none inside;
+}
+
+li {
+  margin-bottom: 2em;
+  padding: 0;
+}
+
+strong {
+  margin-bottom: .5em;
+  font-weight: 500;
+}
+
+em {
+  font-style: normal;
+  display: inline-block;
+  padding: 0 3px;
+  background: #fffbc9;
+}
+
+p {
+  font-size: 14px;
+  margin: 0 0 1em;
+  color: #4e4e4c;
+}
+
+p em {
+  color: #6b381e;
+}
+
+a {
+  text-decoration: none;
+  color: #4265ff;
+}
+a:hover {
+  color: #293acb;
+}
+
+hr {
+  margin: 2em 0;
+  border: 1px solid #eee;
+  border-width: 0 0 1px;
+}
+
+.throbber {
+  margin-top: 30px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 740px) {
+  body {
+    padding: 0 20px;
+    width: auto;
+  }
+
+  .filters,
+  .results {
+    float: none;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .filters {
+    display: none;
+  }
+}
